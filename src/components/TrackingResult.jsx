@@ -60,7 +60,9 @@ const TrackingResult = ({ result, error, onClear }) => {
                 <button
                     onClick={onClear}
                     className="text-gray-400 hover:text-gray-600 transition-colors"
-                ></button>
+                >
+                    Clear Results
+                </button>
             </div>
 
             <div className="grid md:grid-cols-2 gap-6">
