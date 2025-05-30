@@ -11,16 +11,20 @@ class ApiService {
                 },
                 body: JSON.stringify({ tracking_code: trackingCode }),
             });
+
             const data = await response.json();
+
             if (!response.ok) {
                 throw new Error(data.message || 'Failed to track package');
             }
+
             return data;
         } catch (error) {
             console.error('API Error:', error);
             throw error;
         }
     }
+
     async healthCheck() {
         try {
             const response = await fetch(`${API_BASE_URL}/health`);
@@ -31,4 +35,5 @@ class ApiService {
         }
     }
 }
+
 export default new ApiService();
