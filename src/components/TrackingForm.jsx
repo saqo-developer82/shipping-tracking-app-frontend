@@ -49,10 +49,9 @@ const TrackingForm = ({ onSubmit, loading, trackingCode, setTrackingCode }) => {
               onChange={handleInputChange}
               placeholder="e.g., TRK123456789"
               disabled={loading}
-              maxLength={20}
               className="flex-1"
             />
-            <Button type="submit" disabled={loading || !trackingCode.trim()}>
+            <Button type="submit" disabled={loading || !trackingCode?.trim()}>
               {loading ? "Tracking..." : "Get Tracking Info"}
             </Button>
           </div>
@@ -63,6 +62,15 @@ const TrackingForm = ({ onSubmit, loading, trackingCode, setTrackingCode }) => {
         </div>
 
         <div className="space-y-2">
+          <p className="text-sm text-muted-foreground">
+            Tracking code must be at least 8 characters long
+          </p>
+          <p className="text-sm text-muted-foreground">
+            Tracking code cannot exceed 20 characters
+          </p>
+          <p className="text-sm text-muted-foreground">
+            Tracking code must contain only letters and numbers
+          </p>
           <p className="text-sm text-muted-foreground">
             Try these sample tracking codes:
           </p>
