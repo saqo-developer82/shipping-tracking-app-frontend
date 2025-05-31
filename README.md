@@ -6,4 +6,4 @@
 3. Run the script by executing `npm start`.
 4. To tests run `npm test` to ensure everything is working correctly.
 4. Open your browser and navigate to `http://localhost:3000/` to see the form.
-5. Fill in the form with the tracking number and click "Get Tracking Info" to see the tracking information.
+5. Fill in the form with the tracking number and click "Get Tracking Info" to see the tracking information. 
