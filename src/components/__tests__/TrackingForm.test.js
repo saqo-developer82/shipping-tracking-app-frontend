@@ -40,23 +40,32 @@ describe('TrackingForm', () => {
         });
     });
 
-    test('submits form with valid tracking code', async () => {
-        const onSubmit = jest.fn();
-        render(<TrackingForm
-            onSubmit={mockOnSubmit}
-            loading={false}
-            trackingCode=""
-            setTrackingCode={mockSetTrackingCode}
-        />);
+  test('submits form with valid tracking code', async () => {
+    const onSubmit = jest.fn();
 
-        const input = screen.getByLabelText(/tracking code/i);
-        const button = screen.getByRole('button', { name: /get tracking info/i });
+    const Wrapper = () => {
+        const [trackingCode, setTrackingCode] = React.useState('');
+        return (
+            <TrackingForm
+                onSubmit={onSubmit}
+                loading={false}
+                trackingCode={trackingCode}
+                setTrackingCode={setTrackingCode}
+            />
+        );
+    };
 
-        fireEvent.change(input, { target: { value: 'TRK123456789' } });
-        fireEvent.click(button);
+    render(<Wrapper />);
 
-        await waitFor(() => {
-            expect(mockOnSubmit).toHaveBeenCalledWith('TRK123456789');
-        });
+    const input = screen.getByLabelText(/tracking code/i);
+    const button = screen.getByRole('button', { name: /get tracking info/i });
+
+    fireEvent.change(input, { target: { value: 'TRK123456789' } });
+    fireEvent.click(button);
+
+    await waitFor(() => {
+        expect(onSubmit).toHaveBeenCalledWith('TRK123456789');
     });
+});
+
 });
